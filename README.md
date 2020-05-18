@@ -21,6 +21,7 @@ Damkeep forma parte de un proyecto como práctica del lenguaje Kotlin en Android
 * Spring Data JPA
 * Spring Web
 * Spring Security
+* H2 Database
 
 ## ¿Cómo probarlo en Postman?
 
