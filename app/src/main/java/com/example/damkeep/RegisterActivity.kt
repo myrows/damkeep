@@ -30,6 +30,10 @@ class RegisterActivity : AppCompatActivity() {
         var serviceGenerator : ServiceGenerator = ServiceGenerator()
         service = serviceGenerator.createServiceRegister(DamkeepService::class.java)
 
+        textViewIniciarSesion.setOnClickListener {
+            var intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
 
         btnRegister?.setOnClickListener {
 

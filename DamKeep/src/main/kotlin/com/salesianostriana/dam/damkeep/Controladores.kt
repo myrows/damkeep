@@ -33,11 +33,11 @@ class NotaController ( val notaRepository: NotaRepository ) {
 
 
     @PutMapping("/{id}")
-    fun updateNota( @RequestBody nota : NuevaNotaDTO, @PathVariable id : UUID ) : NotaDTO {
+    fun updateNota( @RequestBody nota : NuevaNotaDTO, @PathVariable id : UUID, @AuthenticationPrincipal user: User  ) : NotaDTO {
 
         return notaRepository.findById( id ).map { it ->
             val notaUpdated : Nota = it.copy( title = nota.title, body = nota.body,
-            timeCreated = nota.timeCreated, lastUpdated = nota.lastUpdated, user = null)
+            timeCreated = nota.timeCreated, lastUpdated = nota.lastUpdated, user = user)
 
             notaRepository.save(notaUpdated).toNotaDTO()
         }.orElseThrow() {

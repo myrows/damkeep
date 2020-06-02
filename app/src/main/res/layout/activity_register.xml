@@ -39,10 +39,11 @@
             android:id="@+id/cardViewR3"
             android:layout_width="300dp"
             android:layout_height="50dp"
+            android:layout_marginTop="32dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/imageView2">
 
             <EditText
                 android:id="@+id/editTextUsernameR"
@@ -139,6 +140,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/textViewTecnico"
             app:layout_constraintStart_toEndOf="@+id/textViewTecnico"
             app:layout_constraintTop_toTopOf="@+id/textViewTecnico" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logonota" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
