@@ -38,13 +38,12 @@ data class NuevaNotaDTO(
         @DateTimeFormat(style = "yyyy-MM-dd")
         @LastModifiedDate
         val lastUpdated: LocalDate? = null,
-        val uuidUser : UUID? = null,
         @AuthenticationPrincipal
         val user : User? = null
 
 )
 
-fun NuevaNotaDTO.toNota() = Nota( title, body, user, timeCreated, lastUpdated, uuidUser )
+fun NuevaNotaDTO.toNota() = Nota( title, body, user, timeCreated, lastUpdated )
 
 data class UserDTO(
         var username : String,

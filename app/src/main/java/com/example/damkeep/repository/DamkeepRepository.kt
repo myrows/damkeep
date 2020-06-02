@@ -29,7 +29,7 @@ class DamkeepRepository {
 
     fun getAllNotas() : LiveData<List<Nota>> {
         var dataNotas : MutableLiveData<List<Nota>> = MutableLiveData()
-        val call: Call<NotaResponse> = damkeepService.findAllNotasByAuthor( userId )
+        val call: Call<NotaResponse> = damkeepService.findAllNotasByAuthor()
         call.enqueue(object : Callback<NotaResponse> {
             override fun onResponse(call: Call<NotaResponse>, response: Response<NotaResponse>) {
                 if( response.isSuccessful ) {

@@ -34,9 +34,6 @@ data class Nota (
         @LastModifiedDate
         @JsonFormat( shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd" ) @DateTimeFormat(style = "yyyy-MM-dd") var lastUpdated : LocalDate? = null,
 
-        @Column( name = "uuid_user" )
-        var uuidUser : UUID? = null,
-
         @Column( name = "id" )
         @Id @GeneratedValue val id : UUID? = null
 )

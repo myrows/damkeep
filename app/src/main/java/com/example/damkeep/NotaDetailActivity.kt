@@ -4,6 +4,7 @@ import android.app.Service
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -99,7 +100,7 @@ class NotaDetailActivity : AppCompatActivity() {
         }
 
 
-        var call : Call<NotaResponse> = service.findAllByTitle(intent.extras!!.get("title").toString())
+        var call : Call<NotaResponse> = service.findAllById(intent.extras!!.get("noteId").toString())
 
         call.enqueue( object : Callback<NotaResponse> {
             override fun onResponse(call: Call<NotaResponse>, response: Response<NotaResponse>) {

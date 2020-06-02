@@ -16,15 +16,19 @@ class NotaController ( val notaRepository: NotaRepository ) {
     @GetMapping("/")
     fun findAll() = notaRepository.findAll().map { it.toNotaDTO() }
 
-    @GetMapping("/author/{uuidUser}")
-    fun findNotaByAuthor( @PathVariable uuidUser : UUID?, @AuthenticationPrincipal user : User ) = notaRepository.findNotasByAuthor( user.id ).map { it.toNotaDTO() }
+    @GetMapping("/author/")
+    fun findNotaByAuthor( @AuthenticationPrincipal user : User ) = notaRepository.findNotasByAuthor( user ).map { it.toNotaDTO() }
 
     @GetMapping("/title/{title}")
     fun findNotaByTitle( @PathVariable title : String ) = notaRepository.findNotasByTitle( title ).map { it.toNotaDTO() }
 
+    @GetMapping("/{id}")
+    fun findNotaByTitle( @PathVariable id : UUID ) = notaRepository.findNotasById( id ).map { it.toNotaDTO() }
+
+
     @PostMapping("/")
     fun createNota ( @RequestBody nota : NuevaNotaDTO, @AuthenticationPrincipal user: User ) : Nota {
-        return notaRepository.save(NuevaNotaDTO( nota.title, nota.body, nota.timeCreated, nota.lastUpdated, user.id, user ).toNota())
+        return notaRepository.save(NuevaNotaDTO( nota.title, nota.body, nota.timeCreated, nota.lastUpdated, user ).toNota())
     }
 
 

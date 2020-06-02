@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Range
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.size
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         var service : DamkeepService = serviceGenerator.createServiceNota(DamkeepService::class.java)
 
         val dialog = AlertDialog.Builder(this)
-        val dialogView  = layoutInflater.inflate(R.layout.activity_custom_dialog, null)
+        val dialogView  = layoutInflater.inflate(R.layout.activity_custom_dialog, null, false)
         val editTitle = dialogView.editTitleNota
         val editBody = dialogView.editBodyNota
         dialog.setView(dialogView)
@@ -57,6 +58,9 @@ class MainActivity : AppCompatActivity() {
                             if ( response.isSuccessful ) {
                                 Toast.makeText(this@MainActivity, "Has creado la nota con éxito", Toast.LENGTH_LONG).show()
                                 customDialog.dismiss()
+                                if ( dialogView.parent != null ) {
+                                    (dialogView.parent as ViewGroup).removeView(dialogView)
+                                }
                             }
                         }
 
@@ -66,6 +70,9 @@ class MainActivity : AppCompatActivity() {
                     })
                 } else {
                     Toast.makeText(this, "No puedes guardar una nota vacía, ¿para qué te sirve? :(", Toast.LENGTH_LONG).show()
+                    if ( dialogView.parent != null ) {
+                        (dialogView.parent as ViewGroup).removeView(dialogView)
+                    }
                 }
         }
 

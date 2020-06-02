@@ -10,14 +10,17 @@ import java.util.*
 
 interface DamkeepService {
 
-    @GET("/notas/author/{uuidUser}")
-    fun findAllNotasByAuthor( @Path("uuidUser") uuidUser : String) : Call<NotaResponse>
+    @GET("/notas/author/")
+    fun findAllNotasByAuthor() : Call<NotaResponse>
 
     @GET("/notas/")
     fun findAllNotas() : Call<NotaResponse>
 
     @GET("/notas/title/{title}")
     fun findAllByTitle ( @Path("title") title : String ) : Call<NotaResponse>
+
+    @GET("/notas/{id}")
+    fun findAllById ( @Path("id") id : String ) : Call<NotaResponse>
 
     @GET("/notas/author/{author}")
     fun findAllByAuthor ( @Path("author") author : String ) : Call<NotaResponse>
